@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
-
+import useStorage from './hooks/storage';
 const EXPENSES = [
   {
     id: 'e1',
@@ -26,12 +26,12 @@ const EXPENSES = [
 ];
 
 const App = () => {
-  const [expenses, setExpenses] = useState(EXPENSES);
-
+  const [expenses, setExpenses] = useStorage();
   const addExpenseHandler = (expense) => {
-    setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
+    // setExpenses((prevExpenses) => {
+    //   return [expense, ...prevExpenses];
+    // });
+    setExpenses([...expenses, expense]);
   };
 
   return (
